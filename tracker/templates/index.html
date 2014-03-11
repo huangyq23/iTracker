@@ -1,0 +1,158 @@
+<html>
+<head>
+    <title>iTracker</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+<div id="container">
+    <div id="sidebar">
+        <div id="logo_container">
+            <div id="logo"></div>
+        </div>
+
+        <div id="navigation_container">
+            <div id="navigation_control">
+                <div id="title">Login</div>
+            </div>
+        </div>
+        <div id="content_container">
+
+        </div>
+
+    </div>
+    <div id="map_container">
+        <div id="map">
+        </div>
+    </div>
+</div>
+{% raw %}
+
+<script type="text/x-handlebars" id="account-detail-template">
+    <div id="account-username">
+        <div class="account-username-text">{{username}}</div>
+        <div class="account-view-detail">Manage My Account</div>
+    </div>
+    <button id="account_logout_button" class="secondary-button">Log Out</button>
+</script>
+
+
+<script type="text/x-handlebars" id="account-template">
+    <div id="account-username">
+        <div class="account-username-text">{{username}}</div>
+        <div class="account-view-detail">Manage My Account</div>
+    </div>
+    <button id="account_logout_button" class="secondary-button">Log Out</button>
+</script>
+<script type="text/x-handlebars" id="login-template">
+    <div id="login_content" class="content">
+        <form action="">
+            <div class="form-error">{{ error }}</div>
+            <div class="form-part">
+                <input type="text" id="username" name="username" placeholder="Username">
+            </div>
+            <div class="form-part">
+                <input type="password" id="password" name="password" placeholder="Password">
+            </div>
+            <div class="form-part">
+                <button id="login_button" class="primary-button">Login</button>
+            </div>
+        </form>
+    </div>
+</script>
+
+<script type="text/x-handlebars" id="dashboard-connect-template">
+    <form action="">
+        <div class="form-error">{{ error }}</div>
+        <div class="form-part">
+            <input type="text" id="icloud-username" name="icloud-username" placeholder="iCloud Username">
+        </div>
+        <div class="form-part">
+            <input type="password" id="icloud-password" name="icloud-password" placeholder="iCloud Password">
+        </div>
+        <div class="form-part">
+            <button id="connect_button" class="primary-button">Connect</button>
+        </div>
+    </form>
+</script>
+<script type="text/x-handlebars" id="dashboard-index-template">
+    {{#if session}}
+    <div id="device-list">
+        <div id="device-list-title">
+            Device List
+        </div>
+        {{#each session.devices}}
+        <div class="device" data-device-id="{{id}}">
+            <div class="device-cell">
+                <div class="device-cell-left">
+                    <div class="device-name">
+                        {{name}}
+                    </div>
+                    <div class="device-model">
+                        {{device_name}}
+                    </div>
+                </div>
+                <div class="device-cell-right">
+                    {{#if location_count}}
+                    <div class="device-location-count">
+                        {{location_count}}
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            <div class="device-detail-wrapper close">
+                {{#if location_count}}
+                <div class="device-detail">
+                    <div class="time">
+                        2012/12/12 12:30:45PM
+                    </div>
+                    <div class="coordinates">
+                        40.91740036010742, -73.12005615234375
+                    </div>
+                </div>
+                <div class="location-control">
+                    <div class="cp_slider_container">
+                        <div class="cp_slider_left"></div>
+                        <div class="cp_slider">
+                            <div class="cp_knob"></div>
+                        </div>
+                        <div class="cp_slider_right"></div>
+                    </div>
+                </div>
+                {{else}}
+                <div class="device-detail">
+                    Device Location Unavailable.
+                </div>
+                {{/if}}
+            </div>
+        </div>
+
+        {{/each}}
+    </div>
+    {{/if}}
+</script>
+
+<script type="text/x-handlebars" id="dashboard-template">
+    <div id="account_container">
+    </div>
+    <div id="dashboard_content" class="content">
+
+    </div>
+</script>
+
+<script type="text/x-handlebars" id="infowindow-template">
+    <div id="location-infowindow">
+        <div class="location-time">{{time}}</div>
+        <div class="location-accuracy">
+            Accuracy: {{accuracy}} m
+        </div>
+    </div>
+</script>
+
+{% endraw %}
+<script src="{{ url_for('static', filename='js/libs/mootools-core-1.4.5-full-nocompat-yc.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/mootools-more-1.4.0.1.js') }}"></script>
+<script src="{{ url_for('static', filename='js/libs/handlebars-1.0.0-rc.3.js') }}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeyCE72dedxUe6YXmk_4j9D0KKpyw1csw&sensor=false"></script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

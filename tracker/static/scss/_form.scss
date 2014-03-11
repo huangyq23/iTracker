@@ -1,0 +1,79 @@
+@import "bourbon/bourbon";
+$grid-unit: 30px;
+$content-width: 350px;
+form{
+  margin: 0;
+  .form-part{
+    overflow: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+  }
+  label{
+    font-family: "Sofia";
+    font-size: 20px;
+    line-height: $grid-unit+12px;
+    padding-left: 5px;
+  }
+  input, textarea{
+    font-family:  sans-serif;
+    background: #fcfcfc;
+    color: #5f5f5f;
+    border-radius: 1px;
+  }
+  input[type="text"], input[type="password"], textarea{
+    display: block;
+    padding: 5px;
+    border: 1px solid #cccccc;
+    width: $content-width - 20px - 2px;
+    min-width: $content-width - 20px - 2px;
+    outline: none;
+    float: left;
+    font-size: 16px;
+    @include box-shadow(inset 0px 0px 2px 1px #d6d6d6);
+    //@include box-shadow(inset 0px 0px 2px 1px #5ca762);
+    &:focus{
+      border-color: #a5a5a5;
+      //@include box-shadow(inset 0px 0px 2px 1px #39c9c5);
+    }
+  }
+  input[type="password"]{
+    font-family: sans-serif;
+    height: $grid-unit;
+  }
+  input[type="text"]{
+    height: $grid-unit;
+  }
+  textarea{
+    height: $grid-unit*10;
+  }
+  #id_description{
+    height: $grid-unit*3;
+  }
+  .form-help-text{
+    color: #828282;
+    margin-left: $grid-unit*6;
+    line-height: $grid-unit;
+    font-size: $grid-unit/2;
+    font-family: sans-serif;
+    float: left;
+  }
+  .form-control{
+    overflow: hidden;
+    text-align: right;
+  }
+  .form-error{
+    overflow: hidden;
+    font-size: 14px;
+    color: #ff4548;
+  }
+  .errorlist{
+    li{
+      font-family: sans-serif;
+      list-style:none;
+      line-height: $grid-unit;
+      font-size: $grid-unit/2;
+      color: #ff4548;
+    }
+  }
+}
